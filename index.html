@@ -1,10 +1,105 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Stuff go here</title>
-	</head>
-	<body style="background-color:black;">
-		<h1>This is still a test.</h1>
-	</body>
+    <head>
+        <title>B3X</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body {
+                background-color: #222;
+                color: white;
+                font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            }
+
+            main {
+                min-height: 95vh;
+                margin: auto;
+                display: grid;
+                grid-template-rows: auto 1fr auto;
+                width: 80%;
+            }
+
+            @media (orientation: portrait) {
+                main {
+                    width: 90%;
+                }
+            }
+
+            footer {
+                min-height: 50px;
+            }
+
+            a.disabled {
+                pointer-events: none;
+                cursor: default;
+                color: gray !important;
+            }
+            a:visited {
+                color: #0475f6;
+            }
+
+            .alphabet-count {
+                list-style-type: lower-latin;
+                list-style-position: inside;
+            }
+
+            .lic-section {
+                padding: 12px;
+                background-color: #2b2b2b;
+            }
+        </style>
+    </head>
+    <body style="background-color:black;">
+        <main>
+            <img src="/assets/bxlogo.png" width="96" height="96" alt="TheB Logo">
+            
+            <ul>
+                <li>Games</li>
+                <ul>	
+                    <li> <a href="/" aria-disabled="true" class="disabled" title="WebGL is currently too buggy.">Flag Race</a> <sub>(beta)</sub> </li>
+                    <li> <a href="/fall-xtra/index.html">Fall Xtra</a> <sub>(2.2.1)</sub></li>
+
+                    <li>
+                        <details>
+                            <summary>License (for Games)</summary>
+                            <div class="lic-section">
+                                By using, copying or redistributing this software, you agree to the following terms.
+                                <br>
+                                <br>
+
+                                1. The game softwares may be freely redistributed, under these following term(s) :
+                            
+                                <br>
+                                <ol class="alphabet-count">
+                                    <li>The software shall not be modified/altered to remove any mentions of B3X or any attributions to anybody in that matter.</li>
+                                </ol>
+                            
+                                <br>
+                                <sup><sub>
+                                THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+                                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+                                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+                                IN THE SOFTWARE.
+                                </sub></sup>
+                            </div>
+                        </details>
+                    </li>
+                </ul>
+                <hr>
+
+                <li>
+                    <details>
+                        <summary>Other Things</summary>
+                        Unsuprisingly TODO.
+                    </details>
+                </li>
+            </ul>
+
+            <footer>
+                <hr>
+                <p>not a proper footer yet</p>
+            </footer>
+        </main>
+    </body>
 </html>
 
