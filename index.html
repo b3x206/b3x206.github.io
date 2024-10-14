@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>B3X</title>
+        <title>Hmm...</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
 
         <style>
             body {
@@ -47,40 +48,62 @@
                 padding: 12px;
                 background-color: #2b2b2b;
             }
+
+            .logo {
+                width: 96px;
+                height: 96px;
+                /* image-rendering: pixelated; looks bad currently */
+            }
+            .text-light-red {
+                color: #f69c9c;
+            }
+            .text-gradient-colors {
+            	color: linear-gradient(90deg, rgba(255,182,250,1) 0%, rgba(162,201,255,1) 50%, rgba(255,140,140,1) 100%);
+            	background: linear-gradient(90deg, rgb(233, 255, 127) 0%, rgb(162, 201, 255) 50%, rgb(255, 140, 140) 100%);
+            	background-clip: text;
+            	-webkit-text-fill-color: transparent;
+            }
         </style>
     </head>
-    <body style="background-color:black;">
+    <body style="background-color: black">
         <main>
-            <img src="/assets/bxlogo.png" width="96" height="96" alt="TheB Logo">
-            
+            <img src="/assets/logo.png" class="logo" alt="Logo">
+        
             <ul>
                 <li>Games</li>
-                <ul>	
-                    <li> <a href="/" aria-disabled="true" class="disabled" title="WebGL is currently too buggy.">Flag Race</a> <sub>(beta)</sub> </li>
-                    <li> <a href="/fall-xtra/index.html">Fall Xtra</a> <sub>(2.2.1)</sub></li>
+                <ul>
+                    <li>
+                        <a href="/" aria-disabled="true" class="disabled" title="WebGL is currently too buggy. Still didn't fix it because too busy with web slop.">
+                        Flag Race
+                        </a> <sub>(beta)</sub>
+                    </li>
+                    <li>
+                        <a href="/fall-xtra/index.html">Fall Xtra</a> <sub>(2.2.1)</sub>
+                    </li>
 
                     <li>
                         <details>
                             <summary>License (for Games)</summary>
                             <div class="lic-section">
                                 By using, copying or redistributing this software, you agree to the following terms.
-                                <br>
-                                <br>
+                                <br />
+                                <br />
 
                                 1. The game softwares may be freely redistributed, under these following term(s) :
-                            
-                                <br>
+
+                                <br />
                                 <ol class="alphabet-count">
-                                    <li>The software shall not be modified/altered to remove any mentions of B3X or any attributions to anybody in that matter.</li>
+                                    <li>The software shall not be modified/altered to remove any mentions of the creator or any attributions to anybody in that matter.</li>
                                 </ol>
-                            
-                                <br>
-                                <sup><sub>
-                                THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-                                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-                                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-                                IN THE SOFTWARE.
-                                </sub></sup>
+
+                                <br />
+                                <sup
+                                    ><sub>
+                                        THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR
+                                        A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+                                        ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+                                    </sub></sup
+                                >
                             </div>
                         </details>
                     </li>
@@ -88,18 +111,55 @@
                 <hr>
 
                 <li>
+                    Blog
+                    <ol>
+                        <li>Nothing here... But I am planning to put stuff in the future if i do something notable enough.</li>
+                    </ol>
+                </li>
+                
+                <hr>
+                <li>
                     <details>
-                        <summary>Other Things</summary>
-                        Unsuprisingly TODO.
+                        <summary>Redirects</summary>
+                        <ol>
+                            <li>
+                                <a href="/redirects/error.html" title="This will indeed put you into a crazy error video. I have put generic ones currently.">Random Error Video</a>
+                            </li>
+                        </ol>
                     </details>
                 </li>
             </ul>
 
             <footer>
                 <hr>
-                <p>not a proper footer yet</p>
+                <p id="footerContent">
+                    <code>console.log([0x55, 0x77, 0x55].map(v => String.fromCharCode(v)).join(""));
+                        <noscript>// or just enable js for dynamic footer.</noscript>
+                    </code>
+                </p>
             </footer>
+
+            <script>
+                (() => {
+                    const footer = document.getElementById("footerContent");
+
+                    if (!footer) {
+                        console.warn("[index] no element with id 'footerContent'");
+                        return;
+                    }
+
+                    // as innerHTML
+                    const randFooterContent = [
+                        '<code>console.log([0x55, 0x77, 0x55].map(v => String.fromCharCode(v)).join(""));</code>',
+                        '<span class="text-light-red">GUI Error:</span> You are pushing more GUIClips than you are popping. Make sure they are balanced.',
+                        '<a href="https://github.com/b3x206/bxfw-unity">C# respect button ----&gt;</a>',
+                        '<span class="text-gradient-colors">cool text wow</span>',
+                        'chr(sum(range(ord(min(str(not()))))))'
+                    ];
+
+                    footer.innerHTML = randFooterContent[Math.floor(Math.random() * randFooterContent.length)];
+                })();
+            </script>
         </main>
     </body>
 </html>
-

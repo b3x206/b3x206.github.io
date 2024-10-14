@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Redirecting...</title>
+    </head>
+
+    <body>
+        <!-- Should have slept instead of doing this lol, will wake up at 6am and i am eepy -->
+        <noscript>
+            Yes, you need javascript as github sites doesn't have a "backend".
+        </noscript>
+    </body>
+
+    <script>
+        // eval(`i have ${atob("YWNvdXN0aXNt")}`)
+        const randomVideo = [
+            "https://www.youtube.com/watch?v=5BZLz21ZS_Y",
+            "https://www.youtube.com/watch?v=trwpL42iTds",
+            "https://www.youtube.com/watch?v=nDGNWQTmjgo&t=12s"
+        ];
+
+        window.location.replace(randomVideo[Math.floor(randomVideo.length * Math.random())]);
+    </script>
+</html>
