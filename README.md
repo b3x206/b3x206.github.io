@@ -1,4 +1,4 @@
 # b3x206.github.io
-This is where the games go.
+This is where the games and web stuff go.
 
-And other things like documentation, if i ever do one.
+<sup>What is a documentation?</sup>

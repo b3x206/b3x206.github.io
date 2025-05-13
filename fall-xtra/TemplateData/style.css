@@ -26,6 +26,7 @@ body {
 }
 @supports not (aspect-ratio: 9 / 16) {
     #unity-container {
+        /* stupid fallback */
         width: 25%;
     }
 }

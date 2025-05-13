@@ -1,163 +1,88 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hmm...</title>
+        <title>Epic Unreal Website (no react!)</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
-
-        <style>
-            body {
-                background-color: #222;
-                color: white;
-                font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            }
-
-            main {
-                min-height: 95vh;
-                margin: auto;
-                display: grid;
-                grid-template-rows: auto 1fr auto;
-                width: 80%;
-            }
-
-            @media (orientation: portrait) {
-                main {
-                    width: 90%;
-                }
-            }
-
-            footer {
-                min-height: 50px;
-            }
-
-            a.disabled {
-                pointer-events: none;
-                cursor: default;
-                color: gray !important;
-            }
-            a:visited {
-                color: #0475f6;
-            }
-
-            .alphabet-count {
-                list-style-type: lower-latin;
-                list-style-position: inside;
-            }
-
-            .lic-section {
-                padding: 12px;
-                background-color: #2b2b2b;
-            }
-
-            .logo {
-                width: 96px;
-                height: 96px;
-                /* image-rendering: pixelated; looks bad currently */
-            }
-            .text-light-red {
-                color: #f69c9c;
-            }
-            .text-gradient-colors {
-            	color: linear-gradient(90deg, rgba(255,182,250,1) 0%, rgba(162,201,255,1) 50%, rgba(255,140,140,1) 100%);
-            	background: linear-gradient(90deg, rgb(233, 255, 127) 0%, rgb(162, 201, 255) 50%, rgb(255, 140, 140) 100%);
-            	background-clip: text;
-            	-webkit-text-fill-color: transparent;
-            }
-        </style>
+        <link rel="stylesheet" href="/assets/style.css">
     </head>
-    <body style="background-color: black">
+    <body style="background-color: #1f1f1f">
         <main>
-            <img src="/assets/logo.png" class="logo" alt="Logo">
+            <!-- <img src="/assets/logo.png" class="logo" alt="Logo"> -->
         
+            <hr class="stripe-top-hr">
             <ul>
                 <li>Games</li>
                 <ul>
                     <li>
-                        <a href="/" aria-disabled="true" class="disabled" title="WebGL is currently too buggy. Still didn't fix it because too busy with web slop.">
-                        Flag Race
-                        </a> <sub>(beta)</sub>
+                        <a href="https://b3x.itch.io/flag-race">Flag Race</a> <sub>(0.9.2, itch.io)</sub>
                     </li>
                     <li>
+                        <!-- TODO : update to have the itch version, will rewrite the game in "other dev framework/platform" -->
                         <a href="/fall-xtra/index.html">Fall Xtra</a> <sub>(2.2.1)</sub>
-                    </li>
-
-                    <li>
-                        <details>
-                            <summary>License (for Games)</summary>
-                            <div class="lic-section">
-                                By using, copying or redistributing this software, you agree to the following terms.
-                                <br />
-                                <br />
-
-                                1. The game softwares may be freely redistributed, under these following term(s) :
-
-                                <br />
-                                <ol class="alphabet-count">
-                                    <li>The software shall not be modified/altered to remove any mentions of the creator or any attributions to anybody in that matter.</li>
-                                </ol>
-
-                                <br />
-                                <sup
-                                    ><sub>
-                                        THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR
-                                        A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
-                                        ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-                                    </sub></sup
-                                >
-                            </div>
-                        </details>
                     </li>
                 </ul>
                 <hr>
 
-                <li>
+                <li id="blogList">
                     Blog
                     <ol>
-                        <li>Nothing here... But I am planning to put stuff in the future if i do something notable enough.</li>
+                        <li><a href="/blog/entry1.html">Why blogging killed the interwebs???</a></li>
                     </ol>
                 </li>
                 
                 <hr>
+                <li id="otherStuff">
+                    Other stuff
+                    <ol>
+                        <li>
+                            <a href="/stuff/frutiger-iorange.html" title="Get a free IOrgane!!1!">Get your free IOrgane 🍊 3GS 📶📱</a>
+                        </li>
+                    </ol>
+                </li>
+
+                <hr>
                 <li>
-                    <details>
-                        <summary>Redirects</summary>
-                        <ol>
-                            <li>
-                                <a href="/redirects/error.html" title="This will indeed put you into a crazy error video. I have put generic ones currently.">Random Error Video</a>
-                            </li>
-                        </ol>
-                    </details>
+                    CV
+                    <ol>
+                        <li><a href="/assets/cv.pdf" id="resumeAnchor1" title="Access my CV which is very good, i promise.">PDF</a></li>
+                        <li><a href="/assets/cv.tex" id="resumeAnchor2" title="Access my CV which is very good, i promise.">LaTeX</a></li>
+                    </ol>
                 </li>
             </ul>
 
             <footer>
-                <hr>
+                <hr class="stripe-bottom-hr">
                 <p id="footerContent">
-                    <code>console.log([0x55, 0x77, 0x55].map(v => String.fromCharCode(v)).join(""));
+                    <code><span class="text-gradient-colors">cool text wow</span>
                         <noscript>// or just enable js for dynamic footer.</noscript>
                     </code>
                 </p>
             </footer>
 
+            <script src="/assets/main.js"></script>
             <script>
                 (() => {
-                    const footer = document.getElementById("footerContent");
+                    // blog
+                    // TODO : can 'fetch' https://api.github.com/repos/[user]/[repo]/git/trees/master?recursive=1 to get file structure
+                    // i target blog here
 
-                    if (!footer) {
-                        console.warn("[index] no element with id 'footerContent'");
-                        return;
+                    // resume URLs
+                    const resumeAnchors = [ "resumeAnchor1", "resumeAnchor2" ];
+                    for (const anchorId of resumeAnchors) {
+                        const elem = document.getElementById(anchorId);
+                        if (elem) {
+                            const _0xA = window["atob"];
+                            // VERY SECRET!!11! Nothing to see here..
+                            const vsu = "aHR0cHM6Ly93d3D3C0DEcueW91ZGVjb2RlIG1hbg==dHViZS5jb20vd2F0Y2g/ZGVjb2RlIG1hbiAgdj1kUXc0dzlXZ1hjUQ=="
+                            elem.addEventListener("click", (e) => {
+                                e.preventDefault();
+                                window.location.href = _0xA(vsu.replace(/[A-D][3][0-C]0[D][E]|(ZGVjb2RlIG1hb[0-9A-Z=]{3})+/gi, ""));
+                            });
+                        } else {
+                            console.warn(`[index] no element with id '${anchorId}'`);
+                        }
                     }
-
-                    // as innerHTML
-                    const randFooterContent = [
-                        '<code>console.log([0x55, 0x77, 0x55].map(v => String.fromCharCode(v)).join(""));</code>',
-                        '<span class="text-light-red">GUI Error:</span> You are pushing more GUIClips than you are popping. Make sure they are balanced.',
-                        '<a href="https://github.com/b3x206/bxfw-unity">C# respect button ----&gt;</a>',
-                        '<span class="text-gradient-colors">cool text wow</span>',
-                        'chr(sum(range(ord(min(str(not()))))))'
-                    ];
-
-                    footer.innerHTML = randFooterContent[Math.floor(Math.random() * randFooterContent.length)];
                 })();
             </script>
         </main>

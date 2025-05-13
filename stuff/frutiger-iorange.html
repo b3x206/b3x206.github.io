@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- REAL frutiger aero has NO mobile support 👍🙀. This is because Responsive is only for Reactcels -->
+    <!-- if i wasn't a coward i would have used an HTML4//DTD transitionary header with <table> for layout. -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>YOU WON IORGANE 4G! 📱📱🍊🍊🍊🔂🔂🔂</title>
+    <link rel="favicon" href="/assets/iorgane-favicon.ico" type="image/x-icon">
+
+    <!--
+        👿 I should recreate this website in figma so that i can add the correct type of blur while requiring 1278414mb download. Epic Win!
+        👼 Or I should add fancy WebGL.
+    -->
+    <style>
+        @font-face {
+            font-family: "Comic Sans";
+            src: url("/assets/font/comic-sans.woff") format("woff");
+        }
+
+        * {
+            border: none;
+            margin: none;
+            padding: none;
+        }
+
+        body {
+            background-image: url("/assets/img/frutiger-aero.webp");
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+            --border-radius-val: 16px;
+            --backdrop-blur-val: 16px;
+
+            --window-x-padding: 8px;
+            --window-y-padding: 8px;
+
+            /* feel native again, you just can't be native enough */
+            overflow: hidden;
+        }
+        code {
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+        /* i miss sass, this is pain. */
+        .cursor-resize-n {
+            cursor: n-resize;
+        }
+        .cursor-resize-nw {
+            cursor: nw-resize;
+        }
+        .cursor-resize-w {
+            cursor: w-resize;
+        }
+        .cursor-resize-sw {
+            cursor: sw-resize;
+        }
+        .cursor-resize-s {
+            cursor: s-resize;
+        }
+        .cursor-resize-se {
+            cursor: se-resize;
+        }
+        .cursor-resize-e {
+            cursor: e-resize;
+        }
+        .cursor-resize-ne {
+            cursor: ne-resize;
+        }
+
+        .blurred {
+            border-image: url("/assets/img/win7-glass-split.png") round;
+            border-image-slice: 32% 32% fill;
+            border-image-width: 32px 32px;
+
+            backdrop-filter: blur(var(--backdrop-blur-val));
+        }
+        .blurred-square {
+            border-image: url("/assets/img/win7-glass-square.png") round;
+            border-image-slice: 32% 32% fill;
+            border-image-width: 32px 32px;
+
+            backdrop-filter: blur(var(--backdrop-blur-val));
+        }
+
+        .window {
+            position: absolute;
+            display: flex;
+
+            flex-direction: column;
+            translate: 10px 10px;
+            width: 300px;
+            height: 300px;
+
+            padding: var(--window-y-padding) var(--window-x-padding);
+        }
+        .window-titlebar {
+            display: flex;
+
+            margin-bottom: 12px;
+        }
+        .window-buttons {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+
+            margin-left: auto;
+            margin-top: calc((var(--window-y-padding) - 4px) * -1);
+        }
+        .window-buttons span {
+            padding: 6px;
+            text-align: center;
+            background-color: #CCC3;
+
+            /* make the website feel native */
+            user-select: none;
+            cursor: pointer;
+
+            border-bottom: solid #0004 1px;
+            transition: all 0.33s;
+        }
+        .window-buttons span:hover {
+            background-color: #CCCA;
+            box-shadow: 0px 0px 10px 6px rgba(255,255,255,0.9);
+        }
+        .window-minimize {
+            padding-left: 4px;
+            border-bottom-left-radius: 4px;
+        
+            border-left: solid #0004 1px;
+            border-right: solid #FFFA 1px;
+        }
+        .window-maximize {
+            border-right: solid #FFFA 1px;
+        }
+        .window-close {
+            padding-right: 4px;
+            border-bottom-right-radius: 4px;
+
+            border-right: solid #0004 1px;
+
+            background-color: #D303 !important;
+        }
+        .window-close:hover {
+            background-color: #D30A !important;
+            box-shadow: 0px 0px 10px 6px rgba(219,64,64,0.9) !important;
+        }
+        .window-content {
+            background-color: white;
+            border-radius: calc(var(--border-radius-val) - var(--window-x-padding));
+            
+            flex: 1 0 auto;
+            padding: 8px;
+        }
+
+        .funny-font {
+            font-family: 'Comic Sans';
+            background: linear-gradient(90deg,rgba(155, 42, 42, 1) 0%, rgba(149, 143, 57, 1) 20%, rgba(87, 199, 145, 1) 40%, rgba(127, 206, 206, 1) 60%, rgba(154, 165, 212, 1) 80%, rgba(237, 221, 83, 1) 100%);
+            color: linear-gradient(90deg,rgba(155, 42, 42, 1) 0%, rgba(149, 143, 57, 1) 20%, rgba(87, 199, 145, 1) 40%, rgba(127, 206, 206, 1) 60%, rgba(154, 165, 212, 1) 80%, rgba(237, 221, 83, 1) 100%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .iorgane-win-window-content {
+            display: flex;
+            overflow: auto;
+            min-width: 0;
+        }
+        @keyframes rotate {
+            from {
+                rotate: 0deg;
+            }
+            to {
+                rotate: 360deg;
+            }
+        }
+        .rotating-present-bg {
+            position: absolute;
+            animation: rotate 1s repeat linear;
+            min-width: 0;
+        }
+
+        .bottom-bar {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+
+            padding: 6px;
+        }
+        .bottom-bar-element {
+            aspect-ratio: 1;
+            height: 100%;
+        }
+        .bottom-bar-windoze {
+            border: none;
+            background-color: #0CA4;
+            backdrop-filter: blur(var(--backdrop-blur-val));
+            background-image: url("/assets/img/win7-glass-square.png");
+            border-radius: 50%;
+
+            background-size: 256px;
+            background-repeat: no-repeat;
+            background-position: -5px -5px;
+
+            transition: all 0.33s;
+        }
+        .bottom-bar-windoze:hover {
+            box-shadow: 0px 0px 6px 6px rgba(255,255,255,0.4);
+        }
+        .bottom-bar-windoze img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop class="hidden playable-audio" src="/assets/snd/congratulations.mp3"></audio>
+    <audio autoplay loop class="hidden playable-audio" src="/assets/snd/frutigeraero_youtube_I73FSk4WQpc.mp3"></audio>
+
+    <div class="blurred window">
+        <div class="window-titlebar">
+            <span class="window-title">Window Title</span>
+            <span class="window-buttons">
+                <span class="window-minimize">-</span><span class="window-maximize">□</span><span class="window-close">✕</span>
+            </span>
+        </div>
+        <div class="window-content">
+            hello from wingdi32 rundll. this is a very native application!1! (evident by the <code>user-select: none;</code> on the titlebar buttons. welcome to the future of activexd)<br>
+
+            <p class="funny-font">web design is my passion</p>
+        </div>
+    </div>
+
+    <div class="blurred window" style="translate: 400px 300px; width: 400px;">
+        <div class="window-titlebar">
+            <span class="window-title">Welcome to frutiger popup iorgane</span>
+            <span class="window-buttons">
+                <span class="window-minimize">-</span><span class="window-maximize">□</span><span class="window-close">✕</span>
+            </span>
+        </div>
+        <div class="window-content">
+            <div>
+            this is a very nice window.<br>
+
+            if frutiger, then only aero!!1!<br><br>
+
+            .. yes <a href="/assets/window.js">window.js</a> is still in progress cuz i'm as slow as a sloth. but eh it's almost done.<br><br>
+
+            and the css is somewhat iffy too, but i'm not mr. tailwind. (nor do i know what i'm doing really, this is the most bruteforce css you can write.)<br><br>
+
+            why doesn't flex box act as i say it? idk.
+            </div>
+        </div>
+    </div>
+
+    <div class="blurred window" style="translate: 900px 10px; width: 400px;">
+        <div class="window-titlebar">
+            <span class="window-title">You win iorgane!!1!</span>
+            <span class="window-buttons">
+                <span class="window-minimize">-</span><span class="window-maximize">□</span><span class="window-close">✕</span>
+            </span>
+        </div>
+        <div class="window-content iorgane-win-window-content">
+            <img class="rotating-present-bg" src="/assets/img/present-bg.svg">
+            <!-- <div class="rotating-present-bg"></div> -->
+        </div>
+    </div>
+    
+    <nav class="blurred-square bottom-bar">
+        <button class="bottom-bar-element bottom-bar-windoze"><img src="/assets/img/win7-logo.png" alt="Windoze logo"></button>
+    </nav>
+
+    <script>
+        // TODO:
+        // Fix CSS
+        // Make window
+        // Add "go back" navbar maybe (but may lack it for fulle immersion)
+
+        const supportsAutoplayPolicy = "getAutoplayPolicy" in navigator; // Firefox only API, chrome and other things just work
+        const musicIntervalId = setInterval(async () => {
+            try {
+                // Annoy the user, the script.
+                /** @type {NodeListOf<HTMLAudioElement>} */
+                const results = document.querySelectorAll(".playable-audio");
+                let allPlaySuccess = true;
+                for (const elem of results) {
+                    if (supportsAutoplayPolicy) {
+                        if (navigator.getAutoplayPolicy(elem) === "allowed") {
+                            await elem.play();
+                        } else {
+                            // Go into the next "interval" iteration..
+                            allPlaySuccess = false;
+                            break;
+                        }
+                    } else {
+                        await elem.play();
+                    }
+                }
+
+                // If none of the "elem.play" broke and allPlaySuccess is true (getAutoplayPolicy-related) then we can stop this interval.
+                if (allPlaySuccess) {
+                    clearInterval(musicIntervalId);
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }, 36);
+
+        const alertLimit = 5, alertShowChance = 0.1;
+        let shownAlerts = 0;
+        const alertString = "Thank you fore wining iOrange 7G phone (not for 3 sad onions)";
+        const alertIntervalId = setInterval(() => {
+            if (Math.random() <= alertShowChance) {
+                alert(alertString);
+
+                if (shownAlerts >= alertLimit) {
+                    clearInterval(alertIntervalId);
+                    return;
+                }
+
+                shownAlerts++;
+            }
+        }, 15000);
+        alert(alertString);
+
+        setInterval(() => {
+            // Extremely advanced anti-devtools measure
+            // TODO : recreate this website with 129048091259047102895 npm packages and react
+            debugger;
+        }, 16);
+
+        window.onbeforeunload = (e) => {
+            return "Did you claim your IOrgane©©©© phone? Please claim...";
+        };
+        const prevDocumentTitle = document.title;
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                document.title = "IORANGE 4G CEL-PHONE PLEASE CLAIM!!1!";
+            } else {
+                document.title = prevDocumentTitle;
+            }
+        });
+    </script>
+</body>
+</html>
