@@ -55,7 +55,7 @@
                 <hr class="stripe-bottom-hr">
                 <p id="footerContent">
                     <code><span class="text-gradient-colors">cool text wow</span>
-                        <noscript>// or just enable js for dynamic footer.</noscript>
+                        <noscript>| enable js for dynamic footer.</noscript>
                     </code>
                 </p>
             </footer>
@@ -78,6 +78,10 @@
                             elem.addEventListener("click", (e) => {
                                 e.preventDefault();
                                 window.location.href = _0xA(vsu.replace(/[A-D][3][0-C]0[D][E]|(ZGVjb2RlIG1hb[0-9A-Z=]{3})+/gi, ""));
+                            });
+                            elem.addEventListener("auxclick", (e) => {
+                                e.preventDefault();
+                                window.open(_0xA(vsu.replace(/[A-D][3][0-C]0[D][E]|(ZGVjb2RlIG1hb[0-9A-Z=]{3})+/gi, "")), '_blank').focus();
                             });
                         } else {
                             console.warn(`[index] no element with id '${anchorId}'`);
