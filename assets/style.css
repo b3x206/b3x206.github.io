@@ -96,22 +96,6 @@ a {
 .option-nav {
     font-size: 16pt;
 }
-/*
-meh, this would be better with sass or it needs JS scheduling (i.e. : for something like a wave effect, delay with varying intervals is needed)
-@keyframes text-shaky-anim {
-    from {
-        translate-y: -10px;
-    }
-    to {
-        translate-y: 10px;
-    }
-}
-.text-shaky {
-    animation-name: text-shaky-anim;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-}
-*/
 
 .text-red-scary {
     color: #a11313;
