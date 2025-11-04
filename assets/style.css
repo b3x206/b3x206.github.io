@@ -18,6 +18,17 @@ main {
     grid-template-rows: auto 1fr auto;
     width: 80%;
 }
+ul {
+    padding-left: 40px;
+}
+ol {
+    padding-left: 40px;
+}
+hr {
+    margin: 8px 0;
+    height: 1px;
+    background-color: gray;
+}
 
 .w-100 {
     width: 100%;
@@ -50,7 +61,7 @@ a.disabled {
     color: gray !important;
 }
 a:visited {
-    color: #0475f6;
+    color: #69afff;
 }
 a {
     color: #2189ff;
@@ -95,8 +106,4 @@ a {
 }
 .option-nav {
     font-size: 16pt;
-}
-
-.text-red-scary {
-    color: #a11313;
 }
