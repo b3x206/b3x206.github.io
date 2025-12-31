@@ -1,6 +1,11 @@
 Require all denied
 Options -FollowSymLinks
 
+RedirectMatch 404 /\.git
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
 <FilesMatch "\.(js|css|html|png|jpg|webp|woff2|unityweb|ts|ico|wasm)$">
     Require all granted
 </FilesMatch>
