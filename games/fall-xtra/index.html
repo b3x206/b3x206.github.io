@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Fall Xtra</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body class="dark">
+    <div id="unity-container" class="unity-container-style">
+      <canvas id="unity-canvas"></canvas>
+    </div>
+    <div id="loading-cover" style="display:none;">
+      <div id="unity-loading-bar">
+        <div id="unity-logo"><img src="logo.png"></div>
+        <div id="unity-progress-bar-empty" style="display: none;">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <div id="unity-fullscreen-button" style="display: none;"></div>
+    <script>
+      const hideFullScreenButton = "";
+      const buildUrl = "Build";
+      const loaderUrl = buildUrl + "/fx-2.3.loader.js";
+      const config = {
+        dataUrl: buildUrl + "/fx-2.3.data.unityweb",
+        frameworkUrl: buildUrl + "/fx-2.3.framework.js.unityweb",
+        codeUrl: buildUrl + "/fx-2.3.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "B3X",
+        productName: "Fall Xtra",
+        productVersion: "2.3",
+      };
+
+      const container = document.querySelector("#unity-container");
+      const canvas = document.querySelector("#unity-canvas");
+      const loadingCover = document.querySelector("#loading-cover");
+      const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
+      const progressBarFull = document.querySelector("#unity-progress-bar-full");
+      const fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      const spinner = document.querySelector('.spinner');
+
+      const canFullscreen = (function() {
+        return false; // TODO : fix is needed for this.
+      
+        for (const key of [
+            'exitFullscreen',
+            'webkitExitFullscreen',
+            'webkitCancelFullScreen',
+            'mozCancelFullScreen',
+            'msExitFullscreen',
+          ]) {
+          if (key in document) {
+            return true;
+          }
+        }
+        return false;
+      }());
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+      }
+      loadingCover.style.display = "";
+
+      const script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          spinner.style.display = "none";
+          progressBarEmpty.style.display = "";
+          progressBarFull.style.width = `${100 * progress}%`;
+        }).then((unityInstance) => {
+          loadingCover.style.display = "none";
+          document.unityInstance = unityInstance;
+
+          if (canFullscreen) {
+            if (!hideFullScreenButton) {
+              fullscreenButton.style.display = "";
+            }
+            fullscreenButton.onclick = () => {
+              unityInstance.SetFullscreen(1);
+            };
+          }
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+      
+      /*
+      const unityContainerClassName = "unity-container-style";
+      // This game does not require this functionality (other than a constant aspect ratio)
+      setInterval(() => {
+        // check if we are within aspect, otherwise fit to the screen
+        const containerSize = container.parentElement.getBoundingClientRect();
+        const aspect = containerSize.width / containerSize.height;
+        if (aspect >= (3 / 4)) {
+          if (!container.classList.contains(unityContainerClassName)) {
+            // avoid adding class 7 billion times
+            container.classList.add(unityContainerClassName);
+          }
+        } else {
+          // game can fit to the screen
+          container.classList.remove(unityContainerClassName);
+        }
+      }, 16);
+      
+      // this will not work on safari :(
+      window.onbeforeunload = async () => {
+        document.unityInstance.SendMessage("GameManager", "OnWebGLUnload");
+        // eh good enough. TODO : receive signal on that it's safe to close the tab while unloading
+        await new Promise((r) => setTimeout(r, 100));
+      };
+      */
+    </script>
+  </body>
+</html>

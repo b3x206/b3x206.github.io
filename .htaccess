@@ -1,0 +1,14 @@
+Require all denied
+Options -FollowSymLinks
+
+<FilesMatch "\.(js|css|html|png|jpg|webp|woff2|unityweb|ts|ico|wasm)$">
+    Require all granted
+</FilesMatch>
+
+<FilesMatch ".*\.html">
+    Require all granted
+</FilesMatch>
+
+<FilesMatch "^(index|api)\.php$">
+    Require all granted
+</FilesMatch>
