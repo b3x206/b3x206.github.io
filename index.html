@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>B3X206</title>
+        <title>ℹ️</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="/assets/style.css">
@@ -12,87 +12,51 @@
         
             <hr class="stripe-top-hr">
             <ul>
-                <li>Games</li>
-                <ul>
+                <li>
+                    /home/b3x/games <br>
+                    <sup>you have games in your computer?&#x29;&#x29;&#x29;&#x29;</sup>
+                </li>
+                <ul id="games">
                     <li>
-                        <a href="https://b3x.itch.io/flag-race">Flag Race</a> <sub>(1.0.0, itch.io)</sub>
+                        <a href="/games/flag-race/index.html">Flag Race</a>
                         <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="/games/flag-race/index.html">Flag Race</a>
+                        <a href="https://b3x.itch.io/flag-race">Flag Race</a> <sub>(1.0.0, itch.io)</sub>
                     </li>
                     <li>
-                        <a href="https://b3x.itch.io/fall-xtra">Fall Xtra</a> <sub>(2.3.0, itch.io)</sub>
+                        <a href="/games/fall-xtra/index.html">Fall Xtra</a>
                         <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="/games/fall-xtra/index.html">Fall Xtra</a>
+                        <a href="https://b3x.itch.io/fall-xtra">Fall Xtra</a> <sub>(2.3.0, itch.io)</sub>
                     </li>
                 </ul>
                 <hr>
 
-                <li id="blogList">
-                    Blog
-                    <ol>
-                        <li><a href="/blog/entry1.html">Testing entry</a></li>
-                    </ol>
-                </li>
-                
-                <hr>
-                <li id="otherStuff">
-                    Other stuff
-                    <ol>
-                        <li>
-                            &lt;null&gt;
-                            <!-- <a href="/stuff/frutiger-iorange.html" title="Get a free IOrgane!!1!">Get your free IOrgane 🍊 3GS 📶📱</a> -->
-                        </li>
-                    </ol>
-                </li>
-
                 <hr>
                 <li>
-                    CV
-                    <ol>
-                        <li><a href="/assets/cv.pdf" id="resumeAnchor1" title="Access my CV which is very good, i promise.">PDF</a></li>
-                        <li><a href="/assets/cv.tex" id="resumeAnchor2" title="Access my CV which is very good, i promise.">LaTeX</a></li>
-                    </ol>
+                    /home/b3x/web
                 </li>
+                <ol id="webStuff">
+                    <li>
+                        &lt;null&gt;
+                    </li>
+                </ol>
+
+                <hr>
             </ul>
 
             <footer>
+                <div>
+                    <img alt="Let's NOT encrypt" src="/assets/lets-not-encrypt.gif">
+                    <img alt="Not secure 😱" src="/assets/not-secure.gif">
+                </div>
                 <hr class="stripe-bottom-hr">
                 <p id="footerContent">
-                    <code><span class="text-gradient-colors">cool text wow</span>
+                    <code><span class="text-gradient-colors">cat /dev/urandom</span>
                         <noscript>| enable js for dynamic footer.</noscript>
                     </code>
                 </p>
             </footer>
 
             <script src="/assets/main.js"></script>
-            <script>
-                (() => {
-                    // blog
-                    // TODO : can 'fetch' https://api.github.com/repos/[user]/[repo]/git/trees/master?recursive=1 to get file structure
-                    // i target blog here
-
-                    // resume URLs
-                    const resumeAnchors = [ "resumeAnchor1", "resumeAnchor2" ];
-                    for (const anchorId of resumeAnchors) {
-                        const elem = document.getElementById(anchorId);
-                        if (elem) {
-                            const _0xA = window["atob"];
-                            // VERY SECRET!!11! Nothing to see here..
-                            const vsu = "aHR0cHM6Ly93d3D3C0DEcueW91ZGVjb2RlIG1hbg==dHViZS5jb20vd2F0Y2g/ZGVjb2RlIG1hbiAgdj1kUXc0dzlXZ1hjUQ=="
-                            elem.addEventListener("click", (e) => {
-                                e.preventDefault();
-                                window.location.href = _0xA(vsu.replace(/[A-D][3][0-C]0[D][E]|(ZGVjb2RlIG1hb[0-9A-Z=]{3})+/gi, ""));
-                            });
-                            elem.addEventListener("auxclick", (e) => {
-                                e.preventDefault();
-                                window.open(_0xA(vsu.replace(/[A-D][3][0-C]0[D][E]|(ZGVjb2RlIG1hb[0-9A-Z=]{3})+/gi, "")), '_blank').focus();
-                            });
-                        } else {
-                            console.warn(`[index] no element with id '${anchorId}'`);
-                        }
-                    }
-                })();
-            </script>
         </main>
     </body>
 </html>

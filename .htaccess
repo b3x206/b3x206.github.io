@@ -1,7 +1,7 @@
 Require all denied
 Options -FollowSymLinks
 
-RedirectMatch 404 /\.git
+RedirectMatch 404 ^/\.git
 <FilesMatch "^\.">
     Require all denied
 </FilesMatch>
